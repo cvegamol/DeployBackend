@@ -57,5 +57,6 @@ app.use(variables_series);
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
-console.log("POrueba",allowedOrigins)  
+  console.log("POrueba",allowedOrigins)  ;
+  console.log("Variables de entorno",process.env)
 });
