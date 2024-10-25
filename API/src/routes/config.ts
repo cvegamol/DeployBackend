@@ -6,6 +6,6 @@ export default {
     host: process.env.HOST || "127.0.0.1",
     database: process.env.DATABASE || "ine",
     user: process.env.USER || "root",
-    password: process.env.PASSWORD || ""
-    
+    password: process.env.PASSWORD || "",
+    port:process.env.PORTDB || 3306
 };
