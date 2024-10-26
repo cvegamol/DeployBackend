@@ -19,11 +19,23 @@ const app = express();
 const cors = require('cors');
 
 // Configuración de CORS para desarrollo y producción usando process.env.URLFRONTEND
-const allowedOrigins = process.env.URLFRONTEND || 'http://localhost:8081';
+const allowedOrigins: string[] = [
+  'http://localhost:3000', // Dominio para desarrollo local
+  'https://deploybackend-production-8db4.up.railway.app', // Dominio para producción
+];
 
-app.use(cors({
-  origin: allowedOrigins
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
+
 
 // Middleware que transforma la req.body en JSON
 app.use(express.json());
