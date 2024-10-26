@@ -3,9 +3,9 @@ import { config } from "dotenv";
 config();
 
 export default {
-    host: process.env.HOST || "mysql-ti8n.railway.internal",
-    database: process.env.DATABASE || "ine",
-    user: process.env.USER || "root",
-    password: process.env.PASSWORD || "STlwtgMmIMhPNCeBtWEjKjqxcPzEwmwb",
-    port:process.env.PORTDB || 3307
+    host: process.env.DB_HOST || "mysql-ti8n.railway.internal",
+    database: process.env.DB_NAME || "ine",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "STlwtgMmIMhPNCeBtWEjKjqxcPzEwmwb",
+    port:process.env.DB_PORT || 3307
 };
