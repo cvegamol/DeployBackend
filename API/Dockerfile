@@ -4,20 +4,23 @@ FROM node:18
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de configuración de dependencias
-COPY package*.json ./
-
-# Instala las dependencias
-RUN npm install
-
-# Da permisos de ejecución a `tsc` después de la instalación
-RUN chmod +x ./node_modules/.bin/tsc
-
-# Copia el resto de la aplicación
+# Copia los archivos del proyecto al contenedor
 COPY . .
 
-# Ejecuta el script de construcción
+# Instala dependencias
+RUN npm install
+
+# Instala TypeScript globalmente
+RUN npm install -g typescript
+
+# Da permisos de ejecución a TypeScript en los node_modules
+RUN chmod +x ./node_modules/.bin/tsc
+
+# Compila el proyecto
 RUN npm run build
+
+# Expone el puerto de la app (ajústalo al puerto que usas)
+EXPOSE 3000
 
 # Comando de inicio
 CMD ["npm", "start"]
